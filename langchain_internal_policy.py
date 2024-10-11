@@ -2,7 +2,7 @@ from langchain.prompts.prompt import PromptTemplate
 from langchain_openai import ChatOpenAI
 import os
 from pypdf import PdfReader
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 def fetch_policy_docs_info(policy_dir):
     policy_docs = os.listdir(policy_dir)
@@ -17,11 +17,11 @@ def fetch_policy_docs_info(policy_dir):
 
 def LLM_Query(question):
     # Read the open_API_key and create an .env file with the content as OPENAI_API_KEY=<KEY> in it.
-    dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
+    # dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+    # load_dotenv(dotenv_path)
 
     # Make sure to change this.
-    policy_dir = r"D:\Learning\LangChain\LangChain101\policy_docs"
+    policy_dir = r".\policy_docs"
     doc_info = fetch_policy_docs_info(policy_dir)
 
     summary_template = """
