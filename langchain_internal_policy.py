@@ -39,4 +39,4 @@ def LLM_Query(question):
 
     result = chain.invoke(input={"information": doc_info})
 
-    print(result)
+    return result.content
