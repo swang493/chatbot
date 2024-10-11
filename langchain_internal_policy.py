@@ -15,18 +15,18 @@ def fetch_policy_docs_info(policy_dir):
     return doc_info
 
 
-if __name__ == "__main__":
-    # Read the open_API_key
+def LLM_Query(question):
+    # Read the open_API_key and create an .env file with the content as OPENAI_API_KEY=<KEY> in it.
     dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
     load_dotenv(dotenv_path)
 
+    # Make sure to change this.
     policy_dir = r"D:\Learning\LangChain\LangChain101\policy_docs"
     doc_info = fetch_policy_docs_info(policy_dir)
 
     summary_template = """
-        given the document content "{information}" from coastal bank employee handbook, I want you to answer the following question:
-        1. Tell me what is the procedure when someone is harassed in three points.
-    """
+        given the document content "{information}" from coastal bank employee handbook, I want you to answer the following question: 
+    """ + question
 
     summary_prompt_template = PromptTemplate(
         input_variables="information", template=summary_template
